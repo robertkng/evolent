@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav.jsx';
-import List from './List/List.jsx';
 import './App.css';
 
 export default class App extends Component {
@@ -19,7 +18,7 @@ export default class App extends Component {
       this.setState({
         contacts: results.data,
       });
-      console.log(this.state);
+      // console.log(this.state);
     })
     .catch(err => err);
   }
@@ -32,12 +31,11 @@ export default class App extends Component {
         </div>
         <div className="props">
           {this.props.children}
-          <List
-            contacts={this.state.contacts}
-            getAllContacts={this.getAllContacts.bind(this)}
-          />
+
         </div>
       </div>
     );
   }
 }
+
+

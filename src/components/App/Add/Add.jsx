@@ -12,7 +12,7 @@ export default class Add extends Component {
       phoneNumber: '',
       status: '',
     }
-    // this.reset = this.reset.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   addFirstName(e) {
@@ -80,7 +80,7 @@ export default class Add extends Component {
 
   render() {
     return (
-      <div className="info">
+      <div className="add-container">
         <br/>
         <h1>Add Contact Information</h1>
         <div className="first-name">
