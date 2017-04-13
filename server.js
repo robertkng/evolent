@@ -28,6 +28,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use('/api', router);
-app.use('/', require('./routes/contacts'));
+// app.use('/', require('./routes/contacts'));
 
 app.listen(PORT, () => console.log('server is listening on ', PORT));

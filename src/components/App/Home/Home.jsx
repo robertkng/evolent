@@ -5,7 +5,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div id="home">
+      <div className="home">
         <img src={require('./evolenthealth.png')} />
       </div>
     );

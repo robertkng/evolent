@@ -12,9 +12,9 @@ const App = props => (
     <header>
       <div className="wrapper">
         <img src={require('./evolent.png')} className="logo" />
-        <Link to="/home" className="navbar-button">Home</Link>
-        <Link to="/" className="navbar-button">List Contacts</Link>
         <Link to="/add" className="navbar-button">Add Contacts</Link>
+        <Link to="/list" className="navbar-button">List Contacts</Link>
+        <Link to="/" className="navbar-button">Home</Link>
       </div>
     </header>
 
@@ -30,8 +30,8 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App} >
       <IndexRoute component={Home} />
-        <Route path="/add" component={Add} />
-        <Route path="/list" component={List} />
+        <Route path="add" component={Add} />
+        <Route path="list" component={List} />
     </Route>
   </Router>
 ), document.querySelector('#root-container'));

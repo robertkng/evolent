@@ -1,12 +1,89 @@
-li {
-  font-size: 14px;
+.contacts {
+  width: 35%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.results-container {
-    width: 186px;
-    height: 119px;
-    padding: 10px;
-    border: 12px solid rgb(78, 221, 224);
-    box-shadow: 20px 17px 5px 5px rgba(0,0,0,0.65);
-    margin: 20px;
+.switch-contact {
+  width: 100%;
+  display: flex;
+}
+
+.contacts .active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.contacts .inactive {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.status-btn {
+  width: 50%;
+  padding: 20px 0;
+  border: 0;
+  background: none;
+  color: #000;
+  font-weight: 700;
+  outline: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.status-btn.active-btn {
+  border: 2px solid #4caf50;
+  border-right: 0;
+}
+
+.status-btn.inactive-btn {
+  border: 2px solid #f44336;
+  border-left: 0;
+}
+
+.contact-list {
+  width: 100%;
+  max-height: 500px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.list-title {
+  padding: 20px 0;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fff;
+}
+
+@media only screen and (max-width: 1024px) {
+  .contacts {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .contacts {
+    width: 90%;
+  }
+
+  .status-btn {
+    font-size: 14px;
+  }
 }

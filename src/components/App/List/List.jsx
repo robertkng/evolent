@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Contacts from './Contacts/Contacts.jsx';
+import Contacts from './Contacts/Contacts.jsx';
 import './List.css';
 
 const baseUrl = 'http://localhost:4000/api';
@@ -79,6 +79,7 @@ export class List extends Component {
       activeClass = null;
       contacts = [].concat(this.state.inactiveContacts);
     }
+
     return (
       <div className="contacts">
         <div className="switch-contact">
@@ -92,13 +93,16 @@ export class List extends Component {
             className={`status-btn active-btn ${inactiveClass}`}
             onClick={this.toggleContactState(false)}
           >
+          Inactive Contacts
           </button>
         </div>
+
         <div className="contact-list">
-          <ListContact contacts={contacts} deleteContact={this.deleteContact} />
+          <Contacts contacts={contacts} deleteContact={this.deleteContact} />
           {
             this.state.isLoading ?
-            <div className="contact-loading"><span>Loading...</span></div> : null
+            <div className="contact-loading"><span>Loading...</span></div> :
+            null
           }
         </div>
       </div>
