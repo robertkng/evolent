@@ -35,3 +35,5 @@ const Contacts = (props) => {
 Contacts.propTypes = {
   contacts: React.PropTypes.array,
 };
+
+export default Contacts;

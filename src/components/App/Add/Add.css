@@ -41,3 +41,187 @@ span {
 input {
   font-size: 26px;
 }
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f44336;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4caf50;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Contact Form */
+.contact-form {
+  width: 20%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form-title {
+  width: 100%;
+  padding: 15px 0;
+  margin-top: 20px;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-form-title::before,
+.contact-form-title::after {
+  content: '';
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  height: 2px;
+  background: #000;
+}
+
+.contact-form-title::before {
+  margin-right: 10px;
+}
+
+.contact-form-title::after {
+  margin-left: 10px;
+}
+
+.contact-form-fields {
+  width: 100%;
+}
+
+.contact-field-grp {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-input {
+  padding: 15px;
+  border: 1px solid #512da8;
+  border-radius: 4px;
+  color: #512da8;
+}
+
+.contact-switch {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.contact-switch .switch {
+  margin: 0 20px;
+}
+
+.switch-label {
+  width: 50px;
+  padding-top: 5px;
+  display: block;
+  font-size: 18px;
+}
+
+.switch-label.active {
+  color: #4caf50;
+}
+
+.switch-label.inactive {
+  color: #f44336;
+}
+
+.contact-btns {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contact-form-btn {
+  width: 48%;
+  border: none;
+  padding: 15px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ff5722;
+  border: 1px solid #ff5722;
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all .5s;
+}
+
+.contact-form-btn:hover {
+  background-color: #ff5722;
+  color: #fff;
+  text-decoration: none;
+}
+
+.save-contact:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.cancel-contact {
+  color: #f44336;
+  border: 1px solid #f44336;
+  background-color: transparent;
+}
+
+.cancel-contact:hover {
+  background-color: #f44336;
+  color: #fff;
+  text-decoration: none;
+}

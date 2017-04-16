@@ -8,7 +8,7 @@ export class List extends Component {
   constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       isActive: true,
       activeContacts: [],
       inactiveContacts: [],

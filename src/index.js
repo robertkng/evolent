@@ -11,8 +11,8 @@ const App = props => (
   <div className="container">
     <header>
       <div className="wrapper">
-        <img src={require('./evolent.png')} className="logo" />
-        <Link to="/add" className="navbar-button">Add Contacts</Link>
+        <img src={require('./logo.png')} className="logo" />
+        <Link to="/add-contact" className="navbar-button">Add Contacts</Link>
         <Link to="/list" className="navbar-button">List Contacts</Link>
         <Link to="/" className="navbar-button">Home</Link>
       </div>
@@ -22,15 +22,16 @@ const App = props => (
   </div>
   );
 
-App.propTypes = {
-  children: React.PropTypes.node,
-}
+// App.propTypes = {
+//   children: React.PropTypes.node,
+// };
 
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App} >
       <IndexRoute component={Home} />
-        <Route path="add" component={Add} />
+        <Route path="add-contact" component={Add} />
+        <Route path="edit-contact/:user_id" component={Add} />
         <Route path="list" component={List} />
     </Route>
   </Router>
