@@ -4,7 +4,8 @@
 Production ready application for maintaining contact information built with React, Node, PostgreSQL, Webpack, and Babel. 
 
 ### Features:
-    - add a contact - list contacts
+    - add a contact 
+    - list contacts
     - edit contact
     - delete contact
 

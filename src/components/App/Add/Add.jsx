@@ -89,50 +89,50 @@ export default class Add extends Component {
     this.setState(updateFieldVal);
   }
 
-  // handleChange(fieldName, value, validationParams) {
-  //   this.error = false;
+  handleChange(fieldName, value, validationParams) {
+    this.error = false;
 
-  //   if(!this.state.touch) {
-  //     this.setState ({
-  //       disabled: false,
-  //       touched: true,
-  //     });
-  //   }
+    if(!this.state.touch) {
+      this.setState ({
+        disabled: false,
+        touched: true,
+      });
+    }
 
-  //   if (validationParams !== undefined && validationParams.length) {
-  //     for (let i = 0; i < validationParams.length; i += 1) {
-  //       switch (validationParams[i]) {
-  //         case 'required':
-  //           this.error = Validations.required(value);
-  //           this.updateField(fieldName, value, this.error);
-  //           break;
+    if (validationParams !== undefined && validationParams.length) {
+      for (let i = 0; i < validationParams.length; i += 1) {
+        switch (validationParams[i]) {
+          case 'required':
+            this.error = Validations.required(value);
+            this.updateField(fieldName, value, this.error);
+            break;
 
-  //         case 'alphabets':
-  //           this.error = Validations.alphabets(value);
-  //           this.updateField(fieldName, value, this.error);
-  //           break;
+          case 'alphabets':
+            this.error = Validations.alphabets(value);
+            this.updateField(fieldName, value, this.error);
+            break;
 
-  //         case 'email':
-  //           this.error = Validations.email(value);
-  //           this.updateField(fieldName, value, this.error);
-  //           break;
+          case 'email':
+            this.error = Validations.email(value);
+            this.updateField(fieldName, value, this.error);
+            break;
 
-  //         case 'numbers':
-  //           this.error = Validations.alphabets(value);
-  //           this.updateField(fieldName, value, this.error);
-  //           break;
-  //         default:
-  //           this.updateField(fieldName, value);
-  //       }
+          case 'numbers':
+            this.error = Validations.alphabets(value);
+            this.updateField(fieldName, value, this.error);
+            break;
+          default:
+            this.updateField(fieldName, value);
+        }
 
-  //       if (this.error) {
-  //         break;
-  //       }
-  //     }
-  //   } else {
-  //     this.updateField(fieldName, value);
-  //   }
-  // }
+        if (this.error) {
+          break;
+        }
+      }
+    } else {
+      this.updateField(fieldName, value);
+    }
+  }
 
   resetContactForm(props) {
     this.setState({
@@ -265,60 +265,6 @@ export default class Add extends Component {
     }
   }
 
-  updateFirstName(e) {
-    this.setState({
-      firstName: {
-        value: e.target.value,
-      }
-    })
-  }
-
-  updateLastName(e) {
-    this.setState({
-      lastName: {
-        value: e.target.value,
-      }
-    })
-  }
-
-  updateEmail(e) {
-    this.setState({
-      email: {
-        value: e.target.value,
-      }
-    })
-  }
-
-  updatePhoneNumber(e) {
-    this.setState({
-      phoneNumber: {
-        value: e.target.value,
-      }
-    })
-  }
-
-
-  alpha(e) {
-    const values = /[a-zA-Z]+/g;
-    if(!values.test(e.key)) {
-      e.preventDefault();
-    }
-  }
-
-  numeric(e) {
-    const values = /[0-9]+/g;
-    if(!values.test(e.key)) {
-      e.preventDefault();
-    }
-  }
-
-  alphaNumeric(e) {
-    const values = /[0-9a-zA-Z@.]+/g;
-    if(!values.test(e.key)) {
-      e.preventDefault();
-    }
-  }
-
   render() {
     const {
       firstName,
@@ -344,11 +290,15 @@ export default class Add extends Component {
                 id="first-name"
                 type="text"
                 maxLength="50"
-                onChange={this.props.updateFirstName}
+                onChange={ev => this.handleChange(
+                  'firstName',
+                  ev.target.value,
+                  ['required', 'alphabets'],
+                  )}
                 value={firstName.value}
-                onKeyPress={(e) => this.alpha(e)}
                 className="form"
               />
+              <span className="error">{firstName.error}</span>
             </div>
             <br/>
 
@@ -363,11 +313,11 @@ export default class Add extends Component {
                   'lastName',
                   ev.target.value,
                   ['required', 'alphabets'],
-                )}
+                  )}
                 value={lastName.value}
-                onKeyPress={(e) => this.alpha(e)}
                 className="form"
               />
+              <span className="error">{lastName.error}</span>
             </div>
             <br/>
 
@@ -381,12 +331,11 @@ export default class Add extends Component {
                 onChange={ev => this.handleChange(
                   'email',
                   ev.target.value,
-                  ['required', 'email'],
-                )}
+                  ['required', 'email'])}
                 value={email.value}
-                onKeyPress={(e) => this.alphaNumeric(e)}
                 className="form"
               />
+              <span className="error">{email.error}</span>
             </div>
             <br/>
 
@@ -398,14 +347,13 @@ export default class Add extends Component {
                 type="text"
                 maxLength="10"
                 onChange={ev => this.handleChange(
-                  'phoneNunber',
+                  'phoneNumber',
                   ev.target.value,
-                  ['required', 'numbers']
-                )}
+                  ['required', 'numbers'])}
                 value={phoneNumber.value}
-                onKeyPress={(e) => this.numeric(e)}
                 className="form"
               />
+              <span className="error">{phoneNumber.error}</span>
             </div>
             <br/>
 
@@ -420,15 +368,29 @@ export default class Add extends Component {
               </select>
             </div>
 
+            <div className="contact-field-grp contact-switch">
+              <span className="switch-label inactive">{!status.value ? 'Inactive' : null}</span>
+              <label className="switch" htmlFor="status">
+                <input
+                  type="checkbox"
+                  onChange={ev => this.handleChange('status', ev.target.checked)}
+                  checked={status.value}
+                  id="status"
+                />
+                <div className="slider round" />
+              </label>
+              <span className="switch-label active">{status.value ? 'Active' : null}</span>
+            </div>
 
-
-            <button
-              id="onclick"
-              disabled={disabled}
-              onClick={this.saveContact}
-            >SUBMIT
-            </button>
-            <Link to="/" className="cancel-contact cancel-form-btn">Cancel</Link>
+            <div className="contact-field-grp contact-btns">
+              <button
+                className="save-contact contact-form-btn"
+                disabled={disabled}
+                onClick={this.saveContact}
+              >SUBMIT
+              </button>
+              <Link to="/" className="cancel-contact cancel-form-btn">Cancel</Link>
+            </div>
           </div>
         </div>
       </form>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute, Link } from 'react-router';
-// import App from './components/App/App.jsx';
 import Add from './components/App/Add/Add.jsx';
 import List from './components/App/List/List.jsx';
 import Home from './components/App/Home/Home.jsx';
